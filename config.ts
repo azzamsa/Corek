@@ -1,5 +1,5 @@
 const options: Options = {
-  wallThickness: 4,
+  wallThickness: 1,
   wallShrouding: 0,
   wallXYOffset: 5,
   wallZOffset: 15,
@@ -29,10 +29,10 @@ const options: Options = {
 // NOTE: Screws / the connector with
 // negative indices are placed automatically.
 // In the basic/advanced tab, these values were:
-// [left] screwIndices: [7.5, 16.5, 34.5, 2.5, 11.5, 20.5, 0.5]
-// [left] connectorIndex: 28
-// [right] screwIndices: [7.5, 16.5, 34.5, 2.5, 11.5, 20.5, 0.5]
-// [right] connectorIndex: 28
+// [left] screwIndices: [7.5, 16.5, 35.5, 21.5, 2.5, 11.5, 31.5]
+// [left] connectorIndex: 29
+// [right] screwIndices: [7.5, 16.5, 35.5, 21.5, 2.5, 11.5, 31.5]
+// [right] connectorIndex: 29
 
 /**
  * The planes used to position the clusters.
@@ -41,10 +41,6 @@ const options: Options = {
 const rightFingersPlane = new Trsf().translate(18, 35.6, -15.2)
 
 const rightThumbsPlane = new Trsf()
-  .rotate(0, [0, 0, 0], [1, 0, 0])
-  .rotate(0, [0, 0, 0], [0, 1, 0])
-  .rotate(30, [0, 0, 0], [0, 0, 1])
-  .translate(-40, -20, -20)
   .transformBy(new Trsf().translate(-18, -35.6, 15.2)
   )
   .transformBy(new Trsf().translate(18, 35.6, -15.2)
@@ -53,10 +49,6 @@ const rightThumbsPlane = new Trsf()
 const leftFingersPlane = new Trsf().translate(-18, 35.6, -15.2)
 
 const leftThumbsPlane = new Trsf()
-  .rotate(0, [0, 0, 0], [1, 0, 0])
-  .rotate(0, [0, 0, 0], [0, 1, 0])
-  .rotate(-30, [0, 0, 0], [0, 0, 1])
-  .translate(40, -20, -20)
   .transformBy(new Trsf().translate(18, -35.6, 15.2)
   )
   .transformBy(new Trsf().translate(-18, 35.6, -15.2)
@@ -77,7 +69,7 @@ const fingersLeft: Key[] = [
         arc: 0,
         columnForArc: -1.5
       })
-      .transformBy(new Trsf().translate(0, -17.2, 0)
+      .transformBy(new Trsf().translate(0, -5.8, 0)
       )
       .placeColumn({
         column: -1.5,
@@ -104,7 +96,7 @@ const fingersLeft: Key[] = [
         arc: 0,
         columnForArc: -1.5
       })
-      .transformBy(new Trsf().translate(0, -17.2, 0)
+      .transformBy(new Trsf().translate(0, -5.8, 0)
       )
       .placeColumn({
         column: -1.5,
@@ -132,7 +124,7 @@ const fingersLeft: Key[] = [
         arc: 0,
         columnForArc: -1.5
       })
-      .transformBy(new Trsf().translate(0, -17.2, 0)
+      .transformBy(new Trsf().translate(0, -5.8, 0)
       )
       .placeColumn({
         column: -1.5,
@@ -148,33 +140,6 @@ const fingersLeft: Key[] = [
     }
   },
   {
-    type: "blank",
-    aspect: 1,
-    cluster: "fingers",
-    position: new Trsf()
-      .placeRow({
-        row: -2,
-        spacingOfRows: 19.1,
-        curvatureOfColumn: 0,
-        arc: 0,
-        columnForArc: -0.5
-      })
-      .transformBy(new Trsf().translate(0, 0.4, 0)
-      )
-      .placeColumn({
-        column: -0.5,
-        spacingOfColumns: 19.1,
-        curvatureOfRow: 0
-      })
-      .transformBy(leftFingersPlane),
-    keycap: {
-      letter: "2",
-      row: 1,
-      profile: "xda"
-    },
-    size: { width: 15.5, height: 1.5 }
-  },
-  {
     type: "mx-hotswap",
     aspect: 1,
     cluster: "fingers",
@@ -186,7 +151,7 @@ const fingersLeft: Key[] = [
         arc: 0,
         columnForArc: -0.5
       })
-      .transformBy(new Trsf().translate(0, 0.4, 0)
+      .transformBy(new Trsf().translate(0, 4.3, 0)
       )
       .placeColumn({
         column: -0.5,
@@ -213,7 +178,7 @@ const fingersLeft: Key[] = [
         arc: 0,
         columnForArc: -0.5
       })
-      .transformBy(new Trsf().translate(0, 0.4, 0)
+      .transformBy(new Trsf().translate(0, 4.3, 0)
       )
       .placeColumn({
         column: -0.5,
@@ -241,7 +206,7 @@ const fingersLeft: Key[] = [
         arc: 0,
         columnForArc: -0.5
       })
-      .transformBy(new Trsf().translate(0, 0.4, 0)
+      .transformBy(new Trsf().translate(0, 4.3, 0)
       )
       .placeColumn({
         column: -0.5,
@@ -343,14 +308,19 @@ const fingersLeft: Key[] = [
     aspect: 1,
     cluster: "fingers",
     position: new Trsf()
-      .placeOnMatrix({
-        column: 1.5,
+      .placeRow({
         row: -1,
-        spacingOfColumns: 19.1,
         spacingOfRows: 19.1,
-        curvatureOfRow: 0,
         curvatureOfColumn: 0,
-        arc: 0
+        arc: 0,
+        columnForArc: 1.5
+      })
+      .transformBy(new Trsf().translate(0, 4.3, 0)
+      )
+      .placeColumn({
+        column: 1.5,
+        spacingOfColumns: 19.1,
+        curvatureOfRow: 0
       })
       .transformBy(leftFingersPlane),
     variant: { hotswap: "Kailh" },
@@ -365,14 +335,19 @@ const fingersLeft: Key[] = [
     aspect: 1,
     cluster: "fingers",
     position: new Trsf()
-      .placeOnMatrix({
-        column: 1.5,
+      .placeRow({
         row: 0,
-        spacingOfColumns: 19.1,
         spacingOfRows: 19.1,
-        curvatureOfRow: 0,
         curvatureOfColumn: 0,
-        arc: 0
+        arc: 0,
+        columnForArc: 1.5
+      })
+      .transformBy(new Trsf().translate(0, 4.3, 0)
+      )
+      .placeColumn({
+        column: 1.5,
+        spacingOfColumns: 19.1,
+        curvatureOfRow: 0
       })
       .transformBy(leftFingersPlane),
     variant: { hotswap: "Kailh" },
@@ -388,14 +363,19 @@ const fingersLeft: Key[] = [
     aspect: 1,
     cluster: "fingers",
     position: new Trsf()
-      .placeOnMatrix({
-        column: 1.5,
+      .placeRow({
         row: 1,
-        spacingOfColumns: 19.1,
         spacingOfRows: 19.1,
-        curvatureOfRow: 0,
         curvatureOfColumn: 0,
-        arc: 0
+        arc: 0,
+        columnForArc: 1.5
+      })
+      .transformBy(new Trsf().translate(0, 4.3, 0)
+      )
+      .placeColumn({
+        column: 1.5,
+        spacingOfColumns: 19.1,
+        curvatureOfRow: 0
       })
       .transformBy(leftFingersPlane),
     variant: { hotswap: "Kailh" },
@@ -404,6 +384,28 @@ const fingersLeft: Key[] = [
       row: 4,
       profile: "xda"
     }
+  },
+  {
+    type: "blank",
+    aspect: 1,
+    cluster: "fingers",
+    position: new Trsf()
+      .placeOnMatrix({
+        column: 2.5,
+        row: -2,
+        spacingOfColumns: 19.1,
+        spacingOfRows: 19.1,
+        curvatureOfRow: 0,
+        curvatureOfColumn: 0,
+        arc: 0
+      })
+      .transformBy(leftFingersPlane),
+    keycap: {
+      letter: "5",
+      row: 1,
+      profile: "xda"
+    },
+    size: { height: 2 }
   },
   {
     type: "mx-hotswap",
@@ -498,7 +500,7 @@ const fingersLeft: Key[] = [
       .rotate(0, [0, 0, 0], [1, 0, 0])
       .rotate(0, [0, 0, 0], [0, 1, 0])
       .rotate(-90, [0, 0, 0], [0, 0, 1])
-      .translate(5, -22, 2.3)
+      .translate(5, -22, 0)
       .placeRow({
         row: 0,
         spacingOfRows: 19.1,
@@ -506,7 +508,7 @@ const fingersLeft: Key[] = [
         arc: 0,
         columnForArc: -2.76
       })
-      .transformBy(new Trsf().translate(0, 0, -2.3)
+      .transformBy(new Trsf().translate(0, 11.3, 0)
       )
       .placeColumn({
         column: -2.76,
@@ -583,7 +585,7 @@ const fingersRight: Key[] = [
         arc: 0,
         columnForArc: 1.5
       })
-      .transformBy(new Trsf().translate(0, -17.2, 0)
+      .transformBy(new Trsf().translate(0, -5.8, 0)
       )
       .placeColumn({
         column: 1.5,
@@ -610,7 +612,7 @@ const fingersRight: Key[] = [
         arc: 0,
         columnForArc: 1.5
       })
-      .transformBy(new Trsf().translate(0, -17.2, 0)
+      .transformBy(new Trsf().translate(0, -5.8, 0)
       )
       .placeColumn({
         column: 1.5,
@@ -638,7 +640,7 @@ const fingersRight: Key[] = [
         arc: 0,
         columnForArc: 1.5
       })
-      .transformBy(new Trsf().translate(0, -17.2, 0)
+      .transformBy(new Trsf().translate(0, -5.8, 0)
       )
       .placeColumn({
         column: 1.5,
@@ -654,33 +656,6 @@ const fingersRight: Key[] = [
     }
   },
   {
-    type: "blank",
-    aspect: 1,
-    cluster: "fingers",
-    position: new Trsf()
-      .placeRow({
-        row: -2,
-        spacingOfRows: 19.1,
-        curvatureOfColumn: 0,
-        arc: 0,
-        columnForArc: 0.5
-      })
-      .transformBy(new Trsf().translate(0, 0.4, 0)
-      )
-      .placeColumn({
-        column: 0.5,
-        spacingOfColumns: 19.1,
-        curvatureOfRow: 0
-      })
-      .transformBy(rightFingersPlane),
-    keycap: {
-      letter: "9",
-      row: 1,
-      profile: "xda"
-    },
-    size: { width: 15.5, height: 1.5 }
-  },
-  {
     type: "mx-hotswap",
     aspect: 1,
     cluster: "fingers",
@@ -692,7 +667,7 @@ const fingersRight: Key[] = [
         arc: 0,
         columnForArc: 0.5
       })
-      .transformBy(new Trsf().translate(0, 0.4, 0)
+      .transformBy(new Trsf().translate(0, 4.3, 0)
       )
       .placeColumn({
         column: 0.5,
@@ -719,7 +694,7 @@ const fingersRight: Key[] = [
         arc: 0,
         columnForArc: 0.5
       })
-      .transformBy(new Trsf().translate(0, 0.4, 0)
+      .transformBy(new Trsf().translate(0, 4.3, 0)
       )
       .placeColumn({
         column: 0.5,
@@ -747,7 +722,7 @@ const fingersRight: Key[] = [
         arc: 0,
         columnForArc: 0.5
       })
-      .transformBy(new Trsf().translate(0, 0.4, 0)
+      .transformBy(new Trsf().translate(0, 4.3, 0)
       )
       .placeColumn({
         column: 0.5,
@@ -849,14 +824,19 @@ const fingersRight: Key[] = [
     aspect: 1,
     cluster: "fingers",
     position: new Trsf()
-      .placeOnMatrix({
-        column: -1.5,
+      .placeRow({
         row: -1,
-        spacingOfColumns: 19.1,
         spacingOfRows: 19.1,
-        curvatureOfRow: 0,
         curvatureOfColumn: 0,
-        arc: 0
+        arc: 0,
+        columnForArc: -1.5
+      })
+      .transformBy(new Trsf().translate(0, 4.3, 0)
+      )
+      .placeColumn({
+        column: -1.5,
+        spacingOfColumns: 19.1,
+        curvatureOfRow: 0
       })
       .transformBy(rightFingersPlane),
     variant: { hotswap: "Kailh" },
@@ -871,14 +851,19 @@ const fingersRight: Key[] = [
     aspect: 1,
     cluster: "fingers",
     position: new Trsf()
-      .placeOnMatrix({
-        column: -1.5,
+      .placeRow({
         row: 0,
-        spacingOfColumns: 19.1,
         spacingOfRows: 19.1,
-        curvatureOfRow: 0,
         curvatureOfColumn: 0,
-        arc: 0
+        arc: 0,
+        columnForArc: -1.5
+      })
+      .transformBy(new Trsf().translate(0, 4.3, 0)
+      )
+      .placeColumn({
+        column: -1.5,
+        spacingOfColumns: 19.1,
+        curvatureOfRow: 0
       })
       .transformBy(rightFingersPlane),
     variant: { hotswap: "Kailh" },
@@ -894,14 +879,19 @@ const fingersRight: Key[] = [
     aspect: 1,
     cluster: "fingers",
     position: new Trsf()
-      .placeOnMatrix({
-        column: -1.5,
+      .placeRow({
         row: 1,
-        spacingOfColumns: 19.1,
         spacingOfRows: 19.1,
-        curvatureOfRow: 0,
         curvatureOfColumn: 0,
-        arc: 0
+        arc: 0,
+        columnForArc: -1.5
+      })
+      .transformBy(new Trsf().translate(0, 4.3, 0)
+      )
+      .placeColumn({
+        column: -1.5,
+        spacingOfColumns: 19.1,
+        curvatureOfRow: 0
       })
       .transformBy(rightFingersPlane),
     variant: { hotswap: "Kailh" },
@@ -910,6 +900,28 @@ const fingersRight: Key[] = [
       row: 4,
       profile: "xda"
     }
+  },
+  {
+    type: "blank",
+    aspect: 1,
+    cluster: "fingers",
+    position: new Trsf()
+      .placeOnMatrix({
+        column: -2.5,
+        row: -2,
+        spacingOfColumns: 19.1,
+        spacingOfRows: 19.1,
+        curvatureOfRow: 0,
+        curvatureOfColumn: 0,
+        arc: 0
+      })
+      .transformBy(rightFingersPlane),
+    keycap: {
+      letter: "6",
+      row: 1,
+      profile: "xda"
+    },
+    size: { height: 2 }
   },
   {
     type: "mx-hotswap",
@@ -1004,7 +1016,7 @@ const fingersRight: Key[] = [
       .rotate(0, [0, 0, 0], [1, 0, 0])
       .rotate(0, [0, 0, 0], [0, 1, 0])
       .rotate(90, [0, 0, 0], [0, 0, 1])
-      .translate(-5, -22, 2.3)
+      .translate(-5, -22, 0)
       .placeRow({
         row: 0,
         spacingOfRows: 19.1,
@@ -1012,7 +1024,7 @@ const fingersRight: Key[] = [
         arc: 0,
         columnForArc: 2.76
       })
-      .transformBy(new Trsf().translate(0, 0, -2.3)
+      .transformBy(new Trsf().translate(0, 11.3, 0)
       )
       .placeColumn({
         column: 2.76,
@@ -1079,12 +1091,12 @@ const thumbsRight: Key[] = []
 export default {
   left: {
     ...options,
-    connectorIndex: 29,
+    connectorIndex: 28.5,
     keys: [...fingersLeft, ...thumbsLeft],
   },
   right: {
     ...options,
-    connectorIndex: 29,
+    connectorIndex: 28.5,
     keys: [...fingersRight, ...thumbsRight],
   },
 }
